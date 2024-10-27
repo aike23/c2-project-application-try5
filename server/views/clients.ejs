@@ -1,0 +1,46 @@
+<%- include("header", {title: title}); %>
+    <div class="flexbox">
+        <table>
+            <tr>
+                <td>Device ID</td>
+                <td>OS Name</td>
+                <td>OS Version</td>
+                <td>Location</td>
+                <td>IP Address</td>
+            </tr>
+            <% listOfClients.forEach(function(request) { %>
+                <tr>
+                    <td>
+                        <%= request.computer_id %>
+                    </td>
+                    <td>
+                        <%= request.os_name %>
+                    </td>
+                    <td>
+                        <%= request.os_ver %>
+                    </td>
+                    <td>
+                        <%= request.location %>
+                    </td>
+                    <td>
+                        <%= request.ip_adress %>
+                    </td>
+                    <td>
+                        <form action="/clients/apps" method="POST" style="display: inline;">
+                            <input type="hidden" name="computer_id" value="<%= request.computer_id %>">
+                            <button type="submit" class="greenButton">Installed Apps</button>
+                        </form>
+                        <!-- REMOVED DUE TO TIME PRIORITIES <form action="/clients/send" method="POST" style="display: inline;">
+                            <input type="hidden" name="computer_id" value="<%= request.computer_id %>">
+                            <button type="submit" class="redButton">Send Files</button>
+                        </form> -->
+
+                        <form action="/clients/remove" method="POST" style="display: inline;">
+                            <input type="hidden" name="computer_id" value="<%= request.computer_id %>">
+                            <button type="submit" class="redButton">REMOVE</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+    </div>

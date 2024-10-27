@@ -1,0 +1,25 @@
+<%- include("header", {title: title}); %>
+    <div class="flexbox">
+        <table>
+            <tr>
+                <td>Device ID</td>
+                <td>Date requested</td>
+            </tr>
+            <% pendingRequests.forEach(function(request) { %>
+                <tr>
+                    <td><%= request.requested_computer_id %></td>
+                    <td><%= request.date_requested %></td>
+                    <td>
+                        <form action="/pending/allow" method="POST" style="display: inline;">
+                            <input type="hidden" name="requested_computer_id" value="<%= request.requested_computer_id %>">
+                            <button type="submit" class="greenButton">Allow</button>
+                        </form>
+                        <form action="/pending/remove" method="POST" style="display: inline;">
+                            <input type="hidden" name="requested_computer_id" value="<%= request.requested_computer_id %>">
+                            <button type="submit" class="redButton">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>

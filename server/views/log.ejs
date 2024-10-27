@@ -1,0 +1,23 @@
+<%- include("header", {title: title}); %>
+    <div class="flexbox">
+        <table>
+            <tr>
+                <td>Device ID</td>
+                <td>Status</td>
+                <td>Date of Change</td>
+            </tr>
+            <% logs.forEach(function(request) { %>
+                <tr>
+                    <td>
+                        <%= request.computer_id %>
+                    </td>
+                    <td>
+                        <%= request.status %>
+                    </td>
+                    <td>
+                        <%= request.date %>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+    </div>

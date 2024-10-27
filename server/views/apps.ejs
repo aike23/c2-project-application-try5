@@ -1,0 +1,15 @@
+<%- include("header", {title: title}); %>
+    <div class="flexbox">
+        <table>
+            <tr>
+                <td>App Name</td>
+            </tr>
+            <% apps.forEach(function(app) { %>
+                <tr>
+                    <td>
+                        <%= app.applications %>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+    </div>
